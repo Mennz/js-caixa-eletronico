@@ -50,7 +50,7 @@ async function rodar() {
 
     switch (opcao.trim()) {
       case "1":
-        console.log(`Seu saldo e R$ ${saldo}`);
+        console.log(`Seu saldo e R$ ${saldo.toFixed(2)}`);
         break;
       case "2": {
         const valorTexto = await rl.question("Quanto deseja depositar? R$ ");
@@ -62,7 +62,7 @@ async function rodar() {
         }
 
         saldo = saldo + valor;
-        console.log(`Deposito feito. Novo saldo: R$ ${saldo}`);
+        console.log(`Deposito feito. Novo saldo: R$ ${saldo.toFixed(2)}`);
         break;
       }
       case "3": {
@@ -86,7 +86,7 @@ async function rodar() {
         }
 
         saldo = saldo - valor;
-        console.log(`Saque de R$ ${valor} feito. Novo saldo: R$ ${saldo}`);
+        console.log(`Saque de R$ ${valor.toFixed(2)} feito. Novo saldo: R$ ${saldo.toFixed(2)}`);
         mostrarNotas(calcularNotas(valor));
         break;
       }
