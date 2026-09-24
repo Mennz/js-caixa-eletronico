@@ -5,6 +5,8 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+let saldo = 1000;
+
 function mostrarMenu() {
   console.log("");
   console.log("=== Caixa eletronico ===");
@@ -23,7 +25,7 @@ async function rodar() {
 
     switch (opcao.trim()) {
       case "1":
-        console.log("ainda nao implementado");
+        console.log(`Seu saldo e R$ ${saldo}`);
         break;
       case "2":
         console.log("ainda nao implementado");
