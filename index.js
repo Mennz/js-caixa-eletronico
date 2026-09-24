@@ -40,9 +40,30 @@ async function rodar() {
         console.log(`Deposito feito. Novo saldo: R$ ${saldo}`);
         break;
       }
-      case "3":
-        console.log("ainda nao implementado");
+      case "3": {
+        const valorTexto = await rl.question("Quanto deseja sacar? R$ ");
+        const valor = Number(valorTexto);
+
+        if (isNaN(valor) || valor <= 0) {
+          console.log("valor invalido");
+          break;
+        }
+
+        if (valor > saldo) {
+          console.log("saldo insuficiente");
+          break;
+        }
+
+        // menor nota e 2, entao so aceita multiplo disso
+        if (valor % 2 !== 0) {
+          console.log("so aceito valores multiplos de 2");
+          break;
+        }
+
+        saldo = saldo - valor;
+        console.log(`Saque de R$ ${valor} feito. Novo saldo: R$ ${saldo}`);
         break;
+      }
       case "4":
         console.log("ate mais!");
         rodando = false;
