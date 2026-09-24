@@ -1,0 +1,10 @@
+{
+  "name": "caixa-eletronico",
+  "version": "1.0.0",
+  "description": "Simulacao de caixa eletronico no terminal",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
