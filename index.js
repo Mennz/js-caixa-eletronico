@@ -27,9 +27,19 @@ async function rodar() {
       case "1":
         console.log(`Seu saldo e R$ ${saldo}`);
         break;
-      case "2":
-        console.log("ainda nao implementado");
+      case "2": {
+        const valorTexto = await rl.question("Quanto deseja depositar? R$ ");
+        const valor = Number(valorTexto);
+
+        if (isNaN(valor) || valor <= 0) {
+          console.log("valor invalido");
+          break;
+        }
+
+        saldo = saldo + valor;
+        console.log(`Deposito feito. Novo saldo: R$ ${saldo}`);
         break;
+      }
       case "3":
         console.log("ainda nao implementado");
         break;
