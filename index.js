@@ -7,6 +7,31 @@ const rl = readline.createInterface({
 
 let saldo = 1000;
 
+// so notas pares, porque so aceito saque em multiplo de 2 (sem a nota de 5)
+const notasDisponiveis = [100, 50, 20, 10, 2];
+
+function calcularNotas(valor) {
+  let resto = valor;
+  const notas = {};
+
+  for (const nota of notasDisponiveis) {
+    const quantidade = Math.floor(resto / nota);
+    if (quantidade > 0) {
+      notas[nota] = quantidade;
+      resto = resto - quantidade * nota;
+    }
+  }
+
+  return notas;
+}
+
+function mostrarNotas(notas) {
+  console.log("Notas entregues:");
+  for (const nota in notas) {
+    console.log(`  ${notas[nota]}x R$ ${nota}`);
+  }
+}
+
 function mostrarMenu() {
   console.log("");
   console.log("=== Caixa eletronico ===");
@@ -62,6 +87,7 @@ async function rodar() {
 
         saldo = saldo - valor;
         console.log(`Saque de R$ ${valor} feito. Novo saldo: R$ ${saldo}`);
+        mostrarNotas(calcularNotas(valor));
         break;
       }
       case "4":
